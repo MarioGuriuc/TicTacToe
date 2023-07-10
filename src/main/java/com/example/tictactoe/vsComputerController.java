@@ -285,6 +285,9 @@ public class vsComputerController {
             imagePos7.setImage(null);
             imagePos8.setImage(null);
             turn = 0;
+            drawChecker = 0;
+            xWon = false;
+            oWon = false;
         }
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playAgainPage.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

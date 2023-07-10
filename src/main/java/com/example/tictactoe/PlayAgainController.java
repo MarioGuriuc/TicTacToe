@@ -40,6 +40,7 @@ public class PlayAgainController implements Initializable {
         stage.show();
         PlayingPageController.xWon = false;
         PlayingPageController.oWon = false;
+        playAgainImageHelper.setImage(null);
     }
     public void closeButtonAction(ActionEvent event) {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
