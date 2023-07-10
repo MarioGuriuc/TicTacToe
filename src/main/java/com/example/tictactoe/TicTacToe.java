@@ -15,9 +15,9 @@ public class TicTacToe extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainPage.fxml")));
         Scene scene = new Scene(root);
         stage.setTitle("TicTacToe");
-        stage.setResizable(false);
+        stage.setResizable(true);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("icon.png"))));
         stage.setScene(scene);
-        stage.getIcons().add(new Image("file:icon.png"));
         stage.show();
     }
     public static void main(String[] args) {

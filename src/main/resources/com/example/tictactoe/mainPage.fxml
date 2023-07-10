@@ -31,6 +31,12 @@
             <Image url="@title.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="136.0" layoutX="257.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@vsComputer.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="269.0" layoutY="291.0" mnemonicParsing="false" onAction="#vsComputerButtonAction" opacity="0.0" prefHeight="69.0" prefWidth="112.0" />
    </children>
    <cursor>
       <Cursor fx:constant="CROSSHAIR" />

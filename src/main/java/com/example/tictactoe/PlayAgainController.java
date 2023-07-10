@@ -28,7 +28,12 @@ public class PlayAgainController implements Initializable {
     static Image drawImage = new Image(Objects.requireNonNull(PlayAgainController.class.getResourceAsStream("draw.png")));
 
     public void replayButtonAction(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playingPage.fxml")));
+        if(MainPageController.computer) {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("VsComputerPage.fxml")));
+        }
+        else {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playingPage.fxml")));
+        }
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -39,6 +44,14 @@ public class PlayAgainController implements Initializable {
     public void closeButtonAction(ActionEvent event) {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    public void mainPageButton(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainPage.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @Override
