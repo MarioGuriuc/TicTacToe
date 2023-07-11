@@ -14,8 +14,9 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Random;
 
-public class PlayingPageController {
+public class vsComputerController {
     public static boolean xWon = false;
     public static boolean oWon = false;
     private final int[] board = new int[9];
@@ -48,6 +49,7 @@ public class PlayingPageController {
     public ImageView winPosition258;
     public ImageView winPosition048;
     public ImageView winPosition246;
+    Random computerChoice = new Random();
     private Stage stage;
     private Scene scene;
     private int turn = 0;
@@ -86,12 +88,6 @@ public class PlayingPageController {
     }
 
     private void drawTurnImage(ActionEvent event, int pos) {
-        if (turn % 2 == 0) {
-            turnImage.setImage(image0);
-        } else {
-            turnImage.setImage(imageX);
-        }
-        System.out.println(turn);
         switch (pos) {
             case 0 -> {
                 if ((turn % 2) == 0) imagePos0.setImage(image0);
@@ -157,12 +153,29 @@ public class PlayingPageController {
         return (board[pos] == 1) || (board[pos] == -1);
     }
 
-    private void placeOnPosition(ActionEvent event, int pos) {
+    public void placeOnPosition(ActionEvent event, int pos) {
         if (checkPos(pos)) return;
         board[pos] = (turn % 2) == 0 ? -1 : 1;
         drawTurnImage(event, pos);
         if (turn % 2 == 0) turn++;
         else turn--;
+        computerPlace(event);
+    }
+
+    public void computerPlace(ActionEvent event) {
+        if (drawChecker == 9 || checkWin()) return;
+        boolean placed = false;
+        while (!placed) {
+            int position = computerChoice.nextInt(9);
+            placed = true;
+            if (checkPos(position)) placed = false;
+            else {
+                board[position] = (turn % 2) == 0 ? -1 : 1;
+                drawTurnImage(event, position);
+                if (turn % 2 == 0) turn++;
+                else turn--;
+            }
+        }
     }
 
     public void placeOnFirstPosition(ActionEvent event) {
@@ -270,11 +283,12 @@ public class PlayingPageController {
             turn = 0;
             drawChecker = 0;
             xWon = false;
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playAgainPage.fxml")));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            oWon = false;
         }
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playAgainPage.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

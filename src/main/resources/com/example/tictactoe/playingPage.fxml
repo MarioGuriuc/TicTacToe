@@ -2,35 +2,55 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.PlayingPageController">
    <children>
-      <ImageView fitHeight="480.0" fitWidth="640.0">
+      <ImageView fitHeight="441.0" fitWidth="640.0" layoutY="39.0">
          <image>
             <Image url="@board.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imagePos0" fitHeight="140.0" fitWidth="129.0" layoutX="53.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="firstPosition" defaultButton="true" layoutX="28.0" layoutY="20.0" mnemonicParsing="false" onAction="#placeOnFirstPosition" opacity="0.31" prefHeight="140.0" prefWidth="180.0" />
-      <ImageView fx:id="imagePos1" fitHeight="126.0" fitWidth="135.0" layoutX="256.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="secondPosition" defaultButton="true" layoutX="230.0" layoutY="20.0" mnemonicParsing="false" onAction="#placeOnSecondPosition" opacity="0.31" prefHeight="140.0" prefWidth="180.0" />
-      <ImageView fx:id="imagePos2" fitHeight="140.0" fitWidth="129.0" layoutX="461.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="thirdPosition" defaultButton="true" layoutX="435.0" layoutY="20.0" mnemonicParsing="false" onAction="#placeOnThirdPosition" opacity="0.31" prefHeight="140.0" prefWidth="180.0" />
-      <ImageView fx:id="imagePos3" fitHeight="140.0" fitWidth="129.0" layoutX="53.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="fourthPosition" defaultButton="true" layoutX="27.0" layoutY="170.0" mnemonicParsing="false" onAction="#placeOnFourthPosition" opacity="0.31" prefHeight="140.0" prefWidth="180.0" />
-      <ImageView fx:id="imagePos4" fitHeight="132.0" fitWidth="129.0" layoutX="256.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="fifthPosition" defaultButton="true" layoutX="230.0" layoutY="170.0" mnemonicParsing="false" onAction="#placeOnFifthPosition" opacity="0.31" prefHeight="140.0" prefWidth="180.0" />
-      <ImageView fx:id="imagePos5" fitHeight="132.0" fitWidth="129.0" layoutX="461.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="sixthPosition" defaultButton="true" layoutX="435.0" layoutY="170.0" mnemonicParsing="false" onAction="#placeOnSixthPosition" opacity="0.31" prefHeight="140.0" prefWidth="180.0" />
-      <ImageView fx:id="imagePos6" fitHeight="140.0" fitWidth="129.0" layoutX="53.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="seventhPosition" defaultButton="true" layoutX="27.0" layoutY="326.0" mnemonicParsing="false" onAction="#placeOnSeventhPosition" opacity="0.31" prefHeight="140.0" prefWidth="180.0" />
-      <ImageView fx:id="imagePos7" fitHeight="140.0" fitWidth="129.0" layoutX="256.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="eighthPosition" defaultButton="true" layoutX="230.0" layoutY="326.0" mnemonicParsing="false" onAction="#placeOnEighthPosition" opacity="0.31" prefHeight="140.0" prefWidth="180.0" />
-      <ImageView fx:id="imagePos8" fitHeight="140.0" fitWidth="129.0" layoutX="461.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="ninthPosition" defaultButton="true" layoutX="435.0" layoutY="326.0" mnemonicParsing="false" onAction="#placeOnNinethPosition" opacity="0.31" prefHeight="140.0" prefWidth="180.0" />
+      <ImageView fx:id="imagePos0" fitHeight="91.0" fitWidth="109.0" layoutX="73.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePos1" fitHeight="91.0" fitWidth="109.0" layoutX="274.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePos2" fitHeight="91.0" fitWidth="109.0" layoutX="478.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePos3" fitHeight="91.0" fitWidth="109.0" layoutX="70.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePos4" fitHeight="91.0" fitWidth="109.0" layoutX="273.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePos5" fitHeight="91.0" fitWidth="109.0" layoutX="478.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePos6" fitHeight="91.0" fitWidth="109.0" layoutX="70.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePos7" fitHeight="91.0" fitWidth="109.0" layoutX="273.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePos8" fitHeight="91.0" fitWidth="109.0" layoutX="478.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField blendMode="GREEN" editable="false" layoutX="226.0" layoutY="3.0" prefHeight="33.0" prefWidth="58.0" text="Turn:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="turnImage" fitHeight="35.0" fitWidth="82.0" layoutX="321.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@0.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="winPosition012" fitHeight="150.0" fitWidth="592.0" layoutX="25.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="winPosition345" fitHeight="150.0" fitWidth="592.0" layoutX="28.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="winPosition678" fitHeight="150.0" fitWidth="592.0" layoutX="34.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="winPosition147" fitHeight="62.0" fitWidth="519.0" layoutX="90.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+      <ImageView fx:id="winPosition036" fitHeight="62.0" fitWidth="519.0" layoutX="-119.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+      <ImageView fx:id="winPosition258" fitHeight="62.0" fitWidth="519.0" layoutX="295.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+      <ImageView fx:id="winPosition048" fitHeight="108.0" fitWidth="746.0" layoutX="-49.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" rotate="32.0" />
+      <ImageView fx:id="winPosition246" fitHeight="108.0" fitWidth="746.0" layoutX="-36.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" rotate="-32.0" />
+      <Button fx:id="firstPosition" defaultButton="true" layoutX="27.0" layoutY="55.0" mnemonicParsing="false" onAction="#placeOnFirstPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="secondPosition" defaultButton="true" layoutX="231.0" layoutY="55.0" mnemonicParsing="false" onAction="#placeOnSecondPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="thirdPosition" defaultButton="true" layoutX="435.0" layoutY="55.0" mnemonicParsing="false" onAction="#placeOnThirdPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="fourthPosition" defaultButton="true" layoutX="27.0" layoutY="196.0" mnemonicParsing="false" onAction="#placeOnFourthPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="fifthPosition" defaultButton="true" layoutX="230.0" layoutY="196.0" mnemonicParsing="false" onAction="#placeOnFifthPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="sixthPosition" defaultButton="true" layoutX="435.0" layoutY="196.0" mnemonicParsing="false" onAction="#placeOnSixthPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="seventhPosition" defaultButton="true" layoutX="27.0" layoutY="336.0" mnemonicParsing="false" onAction="#placeOnSeventhPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="eighthPosition" defaultButton="true" layoutX="230.0" layoutY="336.0" mnemonicParsing="false" onAction="#placeOnEighthPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="ninthPosition" defaultButton="true" layoutX="435.0" layoutY="336.0" mnemonicParsing="false" onAction="#placeOnNinethPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
    </children>
    <cursor>
       <Cursor fx:constant="CROSSHAIR" />
