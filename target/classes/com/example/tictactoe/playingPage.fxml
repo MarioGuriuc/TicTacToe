@@ -43,14 +43,14 @@
       <ImageView fx:id="winPosition048" fitHeight="108.0" fitWidth="746.0" layoutX="-49.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" rotate="32.0" />
       <ImageView fx:id="winPosition246" fitHeight="108.0" fitWidth="746.0" layoutX="-36.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" rotate="-32.0" />
       <Button fx:id="firstPosition" defaultButton="true" layoutX="27.0" layoutY="55.0" mnemonicParsing="false" onAction="#placeOnFirstPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
-      <Button fx:id="secondPosition" defaultButton="true" layoutX="231.0" layoutY="55.0" mnemonicParsing="false" onAction="#placeOnSecondPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="secondPosition" defaultButton="true" layoutX="230.0" layoutY="55.0" mnemonicParsing="false" onAction="#placeOnSecondPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
       <Button fx:id="thirdPosition" defaultButton="true" layoutX="435.0" layoutY="55.0" mnemonicParsing="false" onAction="#placeOnThirdPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
       <Button fx:id="fourthPosition" defaultButton="true" layoutX="27.0" layoutY="196.0" mnemonicParsing="false" onAction="#placeOnFourthPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
       <Button fx:id="fifthPosition" defaultButton="true" layoutX="230.0" layoutY="196.0" mnemonicParsing="false" onAction="#placeOnFifthPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
       <Button fx:id="sixthPosition" defaultButton="true" layoutX="435.0" layoutY="196.0" mnemonicParsing="false" onAction="#placeOnSixthPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
       <Button fx:id="seventhPosition" defaultButton="true" layoutX="27.0" layoutY="336.0" mnemonicParsing="false" onAction="#placeOnSeventhPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
       <Button fx:id="eighthPosition" defaultButton="true" layoutX="230.0" layoutY="336.0" mnemonicParsing="false" onAction="#placeOnEighthPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
-      <Button fx:id="ninthPosition" defaultButton="true" layoutX="435.0" layoutY="336.0" mnemonicParsing="false" onAction="#placeOnNinethPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
+      <Button fx:id="ninthPosition" defaultButton="true" layoutX="435.0" layoutY="336.0" mnemonicParsing="false" onAction="#placeOnNinthPosition" opacity="0.31" prefHeight="126.0" prefWidth="180.0" />
    </children>
    <cursor>
       <Cursor fx:constant="CROSSHAIR" />

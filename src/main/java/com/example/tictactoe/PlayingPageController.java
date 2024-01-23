@@ -2,6 +2,7 @@ package com.example.tictactoe;
 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Random;
 
 public class PlayingPageController {
     public static boolean xWon = false;
@@ -21,67 +23,74 @@ public class PlayingPageController {
     private final int[] board = new int[9];
     private final Image imageX = new Image(Objects.requireNonNull(getClass().getResourceAsStream("X.png")));
     private final Image image0 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("0.png")));
-    public Button firstPosition;
-    public Button secondPosition;
-    public Button thirdPosition;
-    public Button fourthPosition;
-    public Button fifthPosition;
-    public Button sixthPosition;
-    public Button seventhPosition;
-    public Button eighthPosition;
-    public Button ninthPosition;
-    public ImageView imagePos0;
-    public ImageView imagePos1;
-    public ImageView imagePos2;
-    public ImageView imagePos3;
-    public ImageView imagePos4;
-    public ImageView imagePos5;
-    public ImageView imagePos6;
-    public ImageView imagePos7;
-    public ImageView imagePos8;
+    public Button firstPosition, secondPosition, thirdPosition, fourthPosition, fifthPosition, sixthPosition, seventhPosition, eighthPosition, ninthPosition;
+    public Button[] positions = new Button[9];
+    public ImageView imagePos0, imagePos1, imagePos2, imagePos3, imagePos4, imagePos5, imagePos6, imagePos7, imagePos8;
+    public ImageView[] imagePos = new ImageView[9];
     public ImageView turnImage;
-    public ImageView winPosition012;
-    public ImageView winPosition345;
-    public ImageView winPosition678;
-    public ImageView winPosition036;
-    public ImageView winPosition147;
-    public ImageView winPosition258;
-    public ImageView winPosition048;
-    public ImageView winPosition246;
-    private Stage stage;
-    private Scene scene;
+    public ImageView winPosition012, winPosition345, winPosition678, winPosition036, winPosition147, winPosition258, winPosition048, winPosition246;
+    public ImageView[] winPositions = new ImageView[8];
     private int turn = 0;
     private int drawChecker = 0;
+    Random computerChoice = new Random();
+
+    @FXML
+    public void initialize() {
+        positions[0] = firstPosition;
+        positions[1] = secondPosition;
+        positions[2] = thirdPosition;
+        positions[3] = fourthPosition;
+        positions[4] = fifthPosition;
+        positions[5] = sixthPosition;
+        positions[6] = seventhPosition;
+        positions[7] = eighthPosition;
+        positions[8] = ninthPosition;
+        imagePos[0] = imagePos0;
+        imagePos[1] = imagePos1;
+        imagePos[2] = imagePos2;
+        imagePos[3] = imagePos3;
+        imagePos[4] = imagePos4;
+        imagePos[5] = imagePos5;
+        imagePos[6] = imagePos6;
+        imagePos[7] = imagePos7;
+        imagePos[8] = imagePos8;
+        winPositions[0] = winPosition012;
+        winPositions[1] = winPosition345;
+        winPositions[2] = winPosition678;
+        winPositions[3] = winPosition036;
+        winPositions[4] = winPosition147;
+        winPositions[5] = winPosition258;
+        winPositions[6] = winPosition048;
+        winPositions[7] = winPosition246;
+    }
 
     public void setDisableButtons(boolean value) {
-        firstPosition.setDisable(value);
-        secondPosition.setDisable(value);
-        thirdPosition.setDisable(value);
-        fourthPosition.setDisable(value);
-        fifthPosition.setDisable(value);
-        sixthPosition.setDisable(value);
-        seventhPosition.setDisable(value);
-        eighthPosition.setDisable(value);
-        ninthPosition.setDisable(value);
+        for (int i = 0; i < 9; i++) {
+            positions[i].setDisable(value);
+        }
+    }
+
+    public void setWinPositionImage(int pos) {
+        winPositions[pos].setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("line1.png"))));
     }
 
     public void setWinPositionImage(int a, int b, int c) {
         if (a == 0 && b == 1 && c == 2) {
-            winPosition012.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("line1.png"))));
+            setWinPositionImage(0);
         } else if (a == 3 && b == 4 && c == 5) {
-            winPosition345.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("line1.png"))));
+            setWinPositionImage(1);
         } else if (a == 6 && b == 7 && c == 8) {
-            winPosition678.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("line1.png"))));
+            setWinPositionImage(2);
         } else if (a == 0 && b == 3 && c == 6) {
-            winPosition036.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("line1.png"))));
+            setWinPositionImage(3);
         } else if (a == 1 && b == 4 && c == 7) {
-            winPosition147.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("line1.png"))));
+            setWinPositionImage(4);
         } else if (a == 2 && b == 5 && c == 8) {
-            winPosition258.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("line1.png"))));
+            setWinPositionImage(5);
         } else if (a == 0 && b == 4 && c == 8) {
-            winPosition048.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("line1.png"))));
+            setWinPositionImage(6);
         } else if (a == 2 && b == 4 && c == 6) {
-            winPosition246.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("line1.png"))));
+            setWinPositionImage(7);
         }
     }
 
@@ -91,43 +100,42 @@ public class PlayingPageController {
         } else {
             turnImage.setImage(imageX);
         }
-        System.out.println(turn);
         switch (pos) {
             case 0 -> {
-                if ((turn % 2) == 0) imagePos0.setImage(image0);
-                else imagePos0.setImage(imageX);
+                if ((turn % 2 == 0)) imagePos[0].setImage(image0);
+                else imagePos[0].setImage(imageX);
             }
             case 1 -> {
-                if ((turn % 2) == 0) imagePos1.setImage(image0);
-                else imagePos1.setImage(imageX);
+                if ((turn % 2 == 0)) imagePos[1].setImage(image0);
+                else imagePos[1].setImage(imageX);
             }
             case 2 -> {
-                if ((turn % 2) == 0) imagePos2.setImage(image0);
-                else imagePos2.setImage(imageX);
+                if ((turn % 2 == 0)) imagePos[2].setImage(image0);
+                else imagePos[2].setImage(imageX);
             }
             case 3 -> {
-                if ((turn % 2) == 0) imagePos3.setImage(image0);
-                else imagePos3.setImage(imageX);
+                if ((turn % 2 == 0)) imagePos[3].setImage(image0);
+                else imagePos[3].setImage(imageX);
             }
             case 4 -> {
-                if ((turn % 2) == 0) imagePos4.setImage(image0);
-                else imagePos4.setImage(imageX);
+                if ((turn % 2 == 0)) imagePos[4].setImage(image0);
+                else imagePos[4].setImage(imageX);
             }
             case 5 -> {
-                if ((turn % 2) == 0) imagePos5.setImage(image0);
-                else imagePos5.setImage(imageX);
+                if ((turn % 2 == 0)) imagePos[5].setImage(image0);
+                else imagePos[5].setImage(imageX);
             }
             case 6 -> {
-                if ((turn % 2) == 0) imagePos6.setImage(image0);
-                else imagePos6.setImage(imageX);
+                if ((turn % 2 == 0)) imagePos[6].setImage(image0);
+                else imagePos[6].setImage(imageX);
             }
             case 7 -> {
-                if ((turn % 2) == 0) imagePos7.setImage(image0);
-                else imagePos7.setImage(imageX);
+                if ((turn % 2 == 0)) imagePos[7].setImage(image0);
+                else imagePos[7].setImage(imageX);
             }
             case 8 -> {
-                if ((turn % 2) == 0) imagePos8.setImage(image0);
-                else imagePos8.setImage(imageX);
+                if ((turn % 2 == 0)) imagePos[8].setImage(image0);
+                else imagePos[8].setImage(imageX);
             }
         }
         PauseTransition pause = new PauseTransition(Duration.seconds(2));
@@ -163,6 +171,7 @@ public class PlayingPageController {
         drawTurnImage(event, pos);
         if (turn % 2 == 0) turn++;
         else turn--;
+        if (MainPageController.computer) computerPlace(event);
     }
 
     public void placeOnFirstPosition(ActionEvent event) {
@@ -197,7 +206,7 @@ public class PlayingPageController {
         placeOnPosition(event, 7);
     }
 
-    public void placeOnNinethPosition(ActionEvent event) {
+    public void placeOnNinthPosition(ActionEvent event) {
         placeOnPosition(event, 8);
     }
 
@@ -253,28 +262,36 @@ public class PlayingPageController {
         return false;
     }
 
-    public void playAgain(ActionEvent event) throws IOException {
-        {
-            for (int i = 0; i < 9; i++) {
-                board[i] = 0;
+    public void computerPlace(ActionEvent event) {
+        if (drawChecker == 9 || checkWin()) return;
+        boolean placed = false;
+        while (!placed) {
+            int position = computerChoice.nextInt(9);
+            placed = true;
+            if (checkPos(position)) placed = false;
+            else {
+                board[position] = (turn % 2) == 0 ? -1 : 1;
+                drawTurnImage(event, position);
+                if (turn % 2 == 0) turn++;
+                else turn--;
             }
-            imagePos0.setImage(null);
-            imagePos1.setImage(null);
-            imagePos2.setImage(null);
-            imagePos3.setImage(null);
-            imagePos4.setImage(null);
-            imagePos5.setImage(null);
-            imagePos6.setImage(null);
-            imagePos7.setImage(null);
-            imagePos8.setImage(null);
-            turn = 0;
-            drawChecker = 0;
-            xWon = false;
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playAgainPage.fxml")));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         }
+    }
+
+    public void playAgain(ActionEvent event) throws IOException {
+        for (int i = 0; i < 9; i++) {
+            board[i] = 0;
+        }
+        for (int i = 0; i < 9; i++) {
+            imagePos[i].setImage(null);
+        }
+        turn = 0;
+        drawChecker = 0;
+        xWon = false;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playAgainPage.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
